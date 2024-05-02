@@ -50,7 +50,7 @@ public class FogLooksGoodNowConfig {
         List<? extends String> densityConfigs = CLIENT_CONFIG.biomeFogs.get();
 
         for (String densityConfig : densityConfigs) {
-            String[] options = densityConfig.split(".*");
+            String[] options = densityConfig.split(",");
             try {
                 list.add(Pair.of(options[0], new FogManager.BiomeFogDensity(Float.parseFloat(options[1]), Float.parseFloat(options[2]), Integer.parseInt(options[3]))));
             } catch (NumberFormatException e) {
