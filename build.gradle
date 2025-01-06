@@ -1,5 +1,5 @@
 plugins {
-    id "dev.architectury.loom" version "1.1-SNAPSHOT"
+    id "dev.architectury.loom" version "1.9-SNAPSHOT"
     id "maven-publish"
 }
 
@@ -19,6 +19,7 @@ loom {
 }
 
 repositories {
+    maven { url "https://maven.neoforged.net/releases/" }
     exclusiveContent {
         forRepository {
             maven {
@@ -34,17 +35,18 @@ repositories {
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    forge "net.neoforged:forge:${project.forge_version}"
 
-    forge "net.minecraftforge:forge:${project.forge_version}"
+    // I wanna configure stuff
+    modImplementation "maven.modrinth:forge-config-screens:${project.fcs_version}"
 
     // Alex's Caves to test mod compatibility
-    modImplementation "maven.modrinth:citadel:2.4.9"
-    modImplementation "maven.modrinth:alexs-caves:1.0.8"
+    modImplementation "maven.modrinth:citadel:${project.citadel_version}"
+    modImplementation "maven.modrinth:alexs-caves:${project.alexs_caves_version}"
 
-    // Iris sun bug fix test
-    modImplementation "maven.modrinth:oculus:1.20.1-1.6.9"
+    // Iris
+    modCompileOnly "maven.modrinth:oculus:${project.iris_version}"
 }
 
 processResources {
